@@ -105,7 +105,7 @@ public class WebRTCView extends ViewGroup {
      * The {@code RendererEvents} which listens to rendering events reported by
      * {@link #surfaceViewRenderer}.
      */
-    private final RendererEvents rendererEvents
+    protected final RendererEvents rendererEvents
         = new RendererEvents() {
             @Override
             public void onFirstFrameRendered() {
