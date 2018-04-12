@@ -159,7 +159,7 @@ public class WebRTCView extends ViewGroup {
      * The {@code VideoRenderer}, if any, which renders {@link #videoTrack} on
      * this {@code View}.
      */
-    private VideoRenderer videoRenderer;
+    protected VideoRenderer videoRenderer;
 
     /**
      * The {@code VideoTrack}, if any, rendered by this {@code WebRTCView}.
@@ -197,7 +197,7 @@ public class WebRTCView extends ViewGroup {
      *
      * @return The {@code SurfaceViewRenderer} which renders {@code videoTrack}.
      */
-    private SurfaceViewRenderer getSurfaceViewRenderer() {
+    protected SurfaceViewRenderer getSurfaceViewRenderer() {
         return surfaceViewRenderer;
     }
 
@@ -208,7 +208,7 @@ public class WebRTCView extends ViewGroup {
      * @return The {@code VideoTrack} (to be) rendered by this
      * {@code WebRTCView}.
      */
-    private VideoTrack getVideoTrack() {
+    protected VideoTrack getVideoTrack() {
         VideoTrack videoTrack = this.videoTrack;
 
         // XXX If WebRTCModule#mediaStreamTrackRelease has already been invoked
@@ -612,7 +612,7 @@ public class WebRTCView extends ViewGroup {
      * Starts rendering {@link #videoTrack} if rendering is not in progress and
      * all preconditions for the start of rendering are met.
      */
-    private void tryAddRendererToVideoTrack() {
+    protected void tryAddRendererToVideoTrack() {
         VideoTrack videoTrack;
 
         if (videoRenderer == null
