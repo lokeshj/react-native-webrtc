@@ -352,6 +352,21 @@ RCT_EXPORT_METHOD(mediaStreamTrackRelease:(nonnull NSString *)streamID : (nonnul
   }
 }
 
+- (RTCMediaStreamTrack*)trackForId:(NSString*)trackId
+{
+  RTCMediaStreamTrack *track = [self trackForId:trackId];
+  if (!track) {
+    for (NSNumber *peerConnectionId in self.peerConnections) {
+      RTCPeerConnection *peerConnection = self.peerConnections[peerConnectionId];
+      track = peerConnection.remoteTracks[trackId];
+      if (track) {
+        break;
+      }
+    }
+  }
+  return track;
+}
+
 RCT_EXPORT_METHOD(mediaStreamTrackSetEnabled:(nonnull NSString *)trackID : (BOOL)enabled)
 {
   RTCMediaStreamTrack *track = self.localTracks[trackID];
